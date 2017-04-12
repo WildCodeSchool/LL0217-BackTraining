@@ -1,12 +1,30 @@
 # La Loupe 0217 - BackTraining
 Exercice pour s'entrainer à utiliser la partie Back de notre MeanStack.
 
+## Requirements
+
+-   [Node](https://doc.ubuntu-fr.org/nodejs#depuis_un_ppa)
+-   [MongoDB](https://doc.ubuntu-fr.org/mongodb#installation)
+-   [Nodemon](http://nodemon.io/)
+
+## Installation
+
+```bash
+npm install
+```
+
+## Development
+
+```bash
+nodemon --exec npm start
+```
+
 ## Objectif
 Créer une API sans authentification qui permet à ses utilisateurs de consulter et d'enrichire une base de donnée de recette de coktails.
 
 
 ``` json
-Exemple de recette: 
+Exemple de recette:
 
 {
   "_id": 1,
@@ -27,14 +45,14 @@ L'utilisateur doit pouvoir faire des requetes pour :
   - Editer une recette. (PUT)
   - Supprimer une recette. (DELETE)
   - [BONUS] Recevoir une recette aléatoire.
-  
+
   Il n'est pas nécessaire de coder une interface visuel. La visualisation des données dans un outils comme [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) est suffisante.
-  
+
   ## Documention
   Documentez ici les requetes http pour acceder à votre API
-  
-  ### getAll 
-   
+
+  ### getAll
+  
    ```
-   GET http://localhost:3000/getAll
+   GET http://localhost:3000/cocktails
    ```
