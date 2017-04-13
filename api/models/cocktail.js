@@ -26,38 +26,48 @@ export default class Cocktail {
 
   findAll(req, res) {
       model.find({},
-          (err, comments) => {
-              if (err || !comments) {
+          (err, cocktails) => {
+              if (err || !cocktails) {
                   res.sendStatus(403);
               } else {
-                  res.json(comments);
+                  res.json(cocktails);
               }
           });
   }
 
-//     findAdd(req, res) {
-//         model.find({
-//           name: req.params.name
-//         })
-//         .exec(
-//            (err, cocktails) => {
-//             if (err || !cocktails) {
-//                 res.sendStatus(403);
-//             } else {
-//                 res.json(cocktails);
-//             }
-//         });
-// }
     addCocktail(req, res){
       model.create(req.body,
-        (err, comment) => {
+        (err, cocktails) => {
             if (err) {
                 res.status(500).send(err.message);
             } else {
-                res.json(comment);
+                res.json(cocktails);
             }
     });
   }
+
+
+    edCocktail(req, res) {
+        model.findOneAndUpdate(req.params.id, req.body,
+            (err, cocktails) => {
+                if (err || !cocktails) {
+                    res.status(500).send(err.message);
+                } else {
+                    res.json(cocktails);
+                }
+            });
+    }
+
+    delCocktail(req, res) {
+      model.findByIdAndRemove(req.params.id,
+        (err) => {
+          if (err) {
+            res.status(500).send(err.message);
+          } else {
+            res.sendStatus(200);
+          }
+      });
+    }
 
 
 }
