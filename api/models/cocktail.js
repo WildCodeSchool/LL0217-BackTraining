@@ -24,6 +24,18 @@ let model = mongoose.model('Cocktail', cocktailSchema);
 
 export default class Cocktail {
 
+  // findRandom(req, res) {
+  //   model.find({
+  //     _id: req.params.id
+  //   }, (err, cocktails) => {
+  //     if (err) {
+  //       res.status(500).send(err.message);
+  //     } else {
+  //       res.json(cocktails);
+  //     }
+  //   });
+  // }
+
   findAll(req, res) {
     model.find({}, (err, cocktails) => {
       if (err || !cocktails) {
