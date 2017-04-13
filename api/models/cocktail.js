@@ -112,7 +112,7 @@ export default class Cocktail {
   //           });
   // }
 
-  put(req, res) {
+  editCocktail(req, res) {
         model.findByIdAndUpdate(req.params.id, req.body,
             (err, cocktail) => {
                 if (err) {
