@@ -45,18 +45,17 @@ export default class Cocktail {
           });
       }
 
-
       updateOne(req, res) {
-            model.update({
-                name: req.params._id              // C'est ce que tu recherches =>  _id : req.params.id
-            }, req.body, (err, cocktail) => {          // Les champs que tu modifies => req.body
-                if (err) {
-                    res.status(500).send(err.message);
-                } else {
-                        res.sendStatus(200);
-                }
-            });
-        }
+      model.update({
+          _id: req.params._id               // C'est ce que tu recherches =>  _id : req.params.id
+      }, req.body, (err, cocktails) => {          // Les champs que tu modifies => req.body
+          if (err) {
+              res.status(500).send(err.message);
+          } else {
+                  res.sendStatus(200);
+          }
+      });
+  }
 
       deleteOne(req, res) {
       model.findByIdAndRemove(req.params._id, (err) => {
@@ -69,7 +68,7 @@ export default class Cocktail {
     }
 
       findId(req, res) {
-            model.find({_id/*ingredients correspond au schéma*/: req.params._id/*.ingredients correspond au /:ingredients*/}, (err,id) => {
+            model.find({_id/*_id correspond au schéma (mongoDB)*/: req.params._id/*._id correspond au /:ingredients*/}, (err,id) => {
               if (err) {
                   res.status(403);
               } else {
