@@ -59,7 +59,7 @@ export default class Cocktail {
         });
     }
     findByIngredients(req, res) {
-        model.findById(req.params.ingredients, {
+        model.find({ingredients: req.params.ingredients}, {
         }, (err, cocktails) => {
             if (err || !cocktails) {
                 res.sendStatus(500);
@@ -69,7 +69,7 @@ export default class Cocktail {
         });
     }
     findByName(req, res) {
-        model.findById(req.params.name, {
+        model.find({name: req.params.name}, {
         }, (err, cocktails) => {
             if (err || !cocktails) {
                 res.sendStatus(500);
@@ -89,6 +89,15 @@ export default class Cocktail {
                     success: true,
                     cocktails: cocktails,
                 });
+            }
+        });
+    }
+    delete(req, res) {
+        model.findByIdAndRemove(req.params.id, (err) => {
+            if (err) {
+                res.status(500).send(err.message);
+            } else {
+                res.sendStatus(200);
             }
         });
     }
