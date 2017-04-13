@@ -34,6 +34,42 @@ export default class Cocktail {
               }
           });
   }
+  findAllId(req, res) {
+      model.findById(req.params.id,
+          (err, cocktails) => {
+              if (err || !cocktails) {
+                  res.sendStatus(403);
+              } else {
+                  res.json(cocktails);
+              }
+          });
+  }
+  findAllName(req, res) {
+      model.find({
+        name: req.params.name
+      },
+          (err, cocktails) => {
+              if (err || !cocktails) {
+                  res.sendStatus(403);
+              } else {
+                  res.json(cocktails);
+              }
+          });
+  }
+  findAllIngredient(req, res) {
+    model.find({
+        ingredients: {
+            $all: req.params.ingredients.split('+')
+        }
+    },
+          (err, cocktails) => {
+              if (err || !cocktails) {
+                  res.sendStatus(403);
+              } else {
+                  res.json(cocktails);
+              }
+          });
+  }
 
     addCocktail(req, res){
       model.create(req.body,

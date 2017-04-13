@@ -9,6 +9,12 @@ module.exports = (app) => {
 
     router.get('/', cocktail.findAll);
 
+    router.get('/:id', cocktail.findAllId);
+
+    router.get('/name/:name', cocktail.findAllName);
+
+    router.get('/ingredients/:ingredients', cocktail.findAllIngredient);
+
     router.post('/', cocktail.addCocktail);
 
     router.put('/:id', cocktail.edCocktail);
