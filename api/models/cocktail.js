@@ -50,6 +50,20 @@ export default class Cocktail {
         });
     }
 
+    findByIngredient(req, res) {
+        model.find({
+            ingredients: {
+                $all: req.params.ingredients.split('+')
+            }
+        }, (err, cocktails) => {
+            if (err || !cocktails) {
+                res.sendStatus(403);
+            } else {
+                res.json(cocktails);
+            }
+        });
+    }
+
     create(req, res) {
         model.create(req.body, (err, cocktails) => {
             if (err) {
@@ -61,8 +75,8 @@ export default class Cocktail {
     }
 
     update(req, res) {
-      console.log(req.body.name);
-        model.findByIdAndUpdate(req.params.id,req.body, (err, cocktail) => {
+        console.log(req.body.name);
+        model.findByIdAndUpdate(req.params.id, req.body, (err, cocktail) => {
             if (err) {
                 res.sendStatus(403);
             } else {
