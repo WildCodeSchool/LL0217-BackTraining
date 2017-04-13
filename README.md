@@ -37,22 +37,81 @@ Exemple de recette:
 ```
 
 L'utilisateur doit pouvoir faire des requetes pour :
-  - Obtenir toutes les recettes (GET)
-  - Chercher une recette par son id. (GET)
-  - Chercher une recette par son nom. (GET)
-  - Chercher des recette par leurs ingredients. (GET)
-  - Créer une nouvelle recette. (POST)
-  - Editer une recette. (PUT)
+  - ~~Obtenir toutes les recettes (GET)~~
+  - ~~Chercher une recette par son id. (GET)~~
+  - ~~Chercher une recette par son nom. (GET)~~
+  - ~~Chercher des recette par leurs ingredients. (GET)~~
+  - ~~Créer une nouvelle recette. (POST)~~
+  - Editer une recette. (PUT) -> with date updated
   - Supprimer une recette. (DELETE)
+  - [BONUS] Refactor the api so that it uses query parameters
   - [BONUS] Recevoir une recette aléatoire.
+  - [BONUS] Add seperate ingredients
+  - [BONUS] Add better search by name, and by ingredients (quty and name)(not necessarily the exact name but something close to it, and return a level of relevence)
+  - [BONUS] Add a stricy mode for search by ingredient
+  - [BONUS] Make it so that the user can modify the dates
 
-  Il n'est pas nécessaire de coder une interface visuel. La visualisation des données dans un outils comme [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) est suffisante.
+  Il n'est pas nécessaire de coder une interface visuel. La visualisation des données dans un outils comme [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomo) est suffisante.
 
   ## Documention
   Documentez ici les requetes http pour acceder à votre API
 
   ### getAll
-  
-   ```
-   GET http://localhost:3000/cocktails
-   ```
+  To get all the cocktails recipes, use
+  ```
+  GET /cocktails/
+  ```
+
+  ### getById
+  To get a cocktail by its id, use
+  ```
+  GET /cocktails/id/<cocktail-id>
+  ```
+  e.g
+  ```
+  GET /cocktails/id/58ef2b8c6ad91959ee1bf7c3
+  ```
+  This assumes _58ef2b8c6ad91959ee1bf7c3_ is a valid id, otherwise a _404_ error is returned.  
+
+  ### getByName
+  To get cocktails by their names, use
+  ```
+  GET /cocktails/name/<cocktail-id>
+  ```
+  e.g
+  ```
+  GET /cocktails/name/Pi%C3%B1a%20Colada
+  ```  
+  Returns an array of all the cocktails with the given name (names are not unique).
+  Returns an empty array if no cocktail is found.
+
+  ### getByIngredients
+  To get cocktails by a list of ingredients, use
+  ```
+  GET /cocktails/ingredients/<ingredient1>,<ingredient2>,<...>
+  ```
+  e.g
+  ```
+  GET /cocktails/ingredients/white%20rum,pineapple
+  ```  
+  Returns an array of all the cocktails that use all the ingredients given (those cocktails might use more ingredients).
+  Returns an empty array if no cocktail is found.
+
+  ### create
+  To create a recipe, use
+  ```
+  POST /cocktails/
+  ```
+  with the recipe in the body.
+  E.g
+  ```json
+  POST /cocktails/
+  body : {
+      "name": "Piña Colada 3",
+      "ingredients": [{
+      	"name":"white rum",
+      	"quantity": "1L"
+      }],
+      "method": ["Drink straight from the bottle"]
+    }
+```
