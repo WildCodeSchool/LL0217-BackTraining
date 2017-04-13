@@ -119,5 +119,5 @@ L'utilisateur doit pouvoir faire des requetes pour :
   ```
   DELETE http://localhost:3000/cocktails/:id
   /* Exemple */
-  PUT http://localhost:3000/cocktails/58ef5dba6d72a0152dbe6c0c
+  DELETE http://localhost:3000/cocktails/58ef5dba6d72a0152dbe6c0c
   ```
