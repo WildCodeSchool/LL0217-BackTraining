@@ -16,7 +16,6 @@ const cocktailSchema = new mongoose.Schema({
         default: Date.now
     },
     updated_at: {
-
         type: Date,
         default: Date.now
     }
@@ -73,7 +72,9 @@ export default class Cocktail {
 
     findByIngredients(req, res) {
 
-        model.findAll(req.params.name, [{}], (err, cocktails) => {
+        model.findAll({
+            ingredients: req.params.ingredients
+        }, (err, cocktails) => {
             if (err || !cocktails) {
                 res.sendStatus(403);
             } else {
