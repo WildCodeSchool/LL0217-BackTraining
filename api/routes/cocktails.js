@@ -17,6 +17,10 @@ module.exports = (app) => {
 
     router.post('/', cocktail.create);
 
+    router.put('/id/:id', cocktail.updateById);
+
+    router.delete('/id/:id', cocktail.deleteById);
+
     app.use('/cocktails', router);
 
 };

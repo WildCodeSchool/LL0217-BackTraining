@@ -42,14 +42,15 @@ L'utilisateur doit pouvoir faire des requetes pour :
   - ~~Chercher une recette par son nom. (GET)~~
   - ~~Chercher des recette par leurs ingredients. (GET)~~
   - ~~Créer une nouvelle recette. (POST)~~
-  - Editer une recette. (PUT) -> with date updated
-  - Supprimer une recette. (DELETE)
+  - ~~Editer une recette. (PUT) -> with date updated~~
+  - ~~Supprimer une recette. (DELETE)~~
   - [BONUS] Refactor the api so that it uses query parameters
   - [BONUS] Recevoir une recette aléatoire.
   - [BONUS] Add seperate ingredients
   - [BONUS] Add better search by name, and by ingredients (quty and name)(not necessarily the exact name but something close to it, and return a level of relevence)
   - [BONUS] Add a stricy mode for search by ingredient
   - [BONUS] Make it so that the user can modify the dates
+  - [BONUS] Make it possible to specify if you ae suppoed to add an ingredient or simply replace them (in "Editer une recette")~~
 
   Il n'est pas nécessaire de coder une interface visuel. La visualisation des données dans un outils comme [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomo) est suffisante.
 
@@ -114,4 +115,30 @@ L'utilisateur doit pouvoir faire des requetes pour :
       }],
       "method": ["Drink straight from the bottle"]
     }
+```
+
+### update
+To update a recipe, use
+```
+PUT /cocktails/id/<cocktail-id>
+```
+with the modifications in the body.
+E.g
+```json
+POST /cocktails/id/58ef384eefe423389353c912
+body : {
+    "name": "Reasonable Piña Colada 3",
+    "method": ["Drink straight from the bottle (don't die tough)"]
+  }
+```
+Currenty, the `method` and `ingredients` fields are simply overwritten with the given values.
+
+### delete
+To delete a recipe, use
+```
+DELETE /cocktails/id/<cocktail-id>
+```
+e.g
+```json
+DELETE /cocktails/id/58ef384eefe423389353c912
 ```

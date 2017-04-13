@@ -100,9 +100,45 @@ export default class Cocktail {
             } else {
                 res.status(201).json({
                     "success": true,
-                    "cocktail": cocktail
+                    "created-cocktail": cocktail
                 });
             }
+        });
+    }
+
+    updateById(req, res) {
+        let modifications = req.body;
+        modifications.updated_at = Date.now();
+        model.findByIdAndUpdate(req.params.id,
+            modifications,
+            {"new" : true},
+            (err, cocktail) => {
+                if (err || !cocktail) {
+                    res.status(403).send({
+                        err
+                    });
+                } else {
+                    res.status(200).json({
+                        "success": true,
+                        "updated-cocktail": cocktail
+                    });
+                }
+        });
+    }
+
+    deleteById(req, res) {
+        model.findByIdAndRemove(req.params.id,
+            (err) => {
+                if (err) {
+                    res.status(403).send({
+                        err
+                    });
+                } else {
+                    res.status(200).json({
+                        "success": true,
+                        "deleted-cocktail-id": req.params.id
+                    });
+                }
         });
     }
 }
