@@ -11,6 +11,8 @@ module.exports = (app) => {
 
     router.get('/', cocktail.findAll);
 
+    router.get('/ingredients/:ingredients', cocktail.findByIngredients);
+
     router.get('/name/:name', cocktail.findByName);
 
     router.get('/:id', cocktail.findById);

@@ -56,6 +56,18 @@ export default class Cocktail {
     });
   }
 
+  findByIngredients(req, res) {
+    model.find({
+      ingredients: req.params.ingredients
+    }, (err, cocktails) => {
+      if (err) {
+        res.status(500).send(err.message);
+      } else {
+        res.json(cocktails);
+      }
+    });
+  }
+
   create(req, res) {
         model.create(req.body,
             (err, cocktails) => {
