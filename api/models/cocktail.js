@@ -1,7 +1,22 @@
 import mongoose from 'mongoose';
 
 const cocktailSchema = new mongoose.Schema({
-  // Write schema here.
+  name: {
+    type: String
+  },
+  ingredient: {
+    type: [String]
+  },
+  method: {
+    type: [String]
+  },
+  created_at: {
+    type: Date,
+  },
+  updated_at: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 let model = mongoose.model('Cocktail', cocktailSchema);
