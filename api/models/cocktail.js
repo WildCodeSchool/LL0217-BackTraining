@@ -141,4 +141,27 @@ export default class Cocktail {
                 }
         });
     }
+
+    findRandom(req, res) {
+        let sampleSize = Number(req.params.sampleSize);
+        if (isNaN(sampleSize) || sampleSize <= 0) {
+            return res.sendStatus(400);
+        }
+
+        model.aggregate({
+            $sample: {
+                size: sampleSize
+            }
+        }).exec((err, cocktail) => {
+            if (err || !cocktail) {
+                res.status(403).send({
+                    err
+                });
+            } else {
+                res.json({
+                    "random-cocktail": cocktail
+                });
+            }
+        });
+    }
 }

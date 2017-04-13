@@ -9,6 +9,8 @@ module.exports = (app) => {
 
     router.get('/', cocktail.findAll);
 
+    router.get('/sample/:sampleSize', cocktail.findRandom);
+
     router.get('/ingredients/:ingredients', cocktail.findByIngredients);
 
     router.get('/name/:name', cocktail.findByName);

@@ -45,7 +45,7 @@ L'utilisateur doit pouvoir faire des requetes pour :
   - ~~Editer une recette. (PUT) -> with date updated~~
   - ~~Supprimer une recette. (DELETE)~~
   - [BONUS] Refactor the api so that it uses query parameters
-  - [BONUS] Recevoir une recette aléatoire.
+  - ~~[BONUS] Recevoir une recette aléatoire.~~
   - [BONUS] Add seperate ingredients
   - [BONUS] Add better search by name, and by ingredients (quty and name)(not necessarily the exact name but something close to it, and return a level of relevence)
   - [BONUS] Add a stricy mode for search by ingredient
@@ -141,4 +141,14 @@ DELETE /cocktails/id/<cocktail-id>
 e.g
 ```json
 DELETE /cocktails/id/58ef384eefe423389353c912
+```
+
+### random sample
+To get a random sample, use
+```
+GET /cocktails/sample/<sample-size>
+```
+e.g
+```json
+GET /cocktails/sample/3
 ```
