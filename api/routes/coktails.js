@@ -9,9 +9,9 @@ module.exports = (app) => {
 
     router.get('/', cocktail.findAll);
     router.post('/', cocktail.post);
-    router.get('/', cocktail.findById);
-    router.get('/', cocktail.findByName);
-    router.get('/', cocktail.findByIngredients);
+    router.get('/name/:name', cocktail.findByName);
+    router.get('/:id', cocktail.findById);
+    router.get('/ingredients', cocktail.findByIngredients);
     router.put('/', cocktail.put);
     router.delete('/', cocktail.delete);
 

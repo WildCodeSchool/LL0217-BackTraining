@@ -49,8 +49,7 @@ export default class Cocktail {
 
     findById(req, res) {
 
-        model.findById(req.params.id, {
-        }, (err, cocktails) => {
+        model.findById(req.params.id, (err, cocktails) => {
             if (err || !cocktails) {
                 res.sendStatus(403);
             } else {
@@ -61,7 +60,8 @@ export default class Cocktail {
 
     findByName(req, res) {
 
-        model.find(req.params.name, {
+        model.find({
+            name: req.params.name
         }, (err, cocktails) => {
             if (err || !cocktails) {
                 res.sendStatus(403);
@@ -73,8 +73,7 @@ export default class Cocktail {
 
     findByIngredients(req, res) {
 
-        model.findAll(req.params.name, [{
-        }], (err, cocktails) => {
+        model.findAll(req.params.name, [{}], (err, cocktails) => {
             if (err || !cocktails) {
                 res.sendStatus(403);
             } else {
