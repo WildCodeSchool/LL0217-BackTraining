@@ -35,7 +35,7 @@ export default class Cocktail {
   }
 
   findById(req, res) {
-    model.find(req.params.id, (err, cocktails) => {
+    model.findById(req.params.id, (err, cocktails) => {
       if (err) {
         res.status(500).send(err.message);
       } else {
@@ -44,21 +44,8 @@ export default class Cocktail {
     });
   }
 
-  findByName(req, res) {
-    model.find(req.params.name, (err, cocktails) => {
-      if (err) {
-        res.status(500).send(err.message);
-      } else {
-        res.json(cocktails);
-      }
-    });
-  }
-
-  //
   // findByName(req, res) {
-  //   model.find({
-  //     id: req.params.name
-  //   }, (err, cocktails) => {
+  //   model.findByName(req.params.name, (err, cocktails) => {
   //     if (err) {
   //       res.status(500).send(err.message);
   //     } else {
