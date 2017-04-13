@@ -69,7 +69,7 @@ export default class Cocktail {
 
       findId(req, res) {
             model.find({_id/*_id correspond au schéma (mongoDB)*/: req.params._id/*._id correspond au /:ingredients*/}, (err,id) => {
-              if (err) {
+              if (err || !id) {
                   res.status(403);
               } else {
                   res.json(id);
@@ -79,7 +79,7 @@ export default class Cocktail {
 
       findIngredients(req, res) {
             model.find({ingredients/*ingredients correspond au schéma*/: req.params.ingredients/*.ingredients correspond au /:ingredients*/}, (err,ingredients) => {
-              if (err) {
+              if (err  || !ingredients) {
                   res.status(403);
               } else {
                   res.json(ingredients);
@@ -89,7 +89,7 @@ export default class Cocktail {
 
       findName(req, res) {
             model.find({name/*name correspond au schéma*/: req.params.name}, (err,cocktail) => {
-              if (err) {
+              if (err  || !cocktails) {
                   res.status(403);
               } else {
                   res.json(cocktail);
