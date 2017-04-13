@@ -7,8 +7,12 @@ module.exports = (app) => {
 
     var cocktail = new Cocktail();
 
+    router.get('/:name', cocktail.findName);
+
+    router.post('/', cocktail.create);
+
     router.get('/', cocktail.findAll);
-    
+
     app.use('/cocktails', router);
 
 };
