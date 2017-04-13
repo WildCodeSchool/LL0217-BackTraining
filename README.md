@@ -49,7 +49,46 @@ L'utilisateur doit pouvoir faire des requetes pour :
   Il n'est pas nécessaire de coder une interface visuel. La visualisation des données dans un outils comme [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) est suffisante.
 
   ## Documention
-  Documentez ici les requetes http pour acceder à votre API
+
+  <!-- - Obtenir toutes les recettes (GET)
+  Pour obtenir toutes les recettes enregistrées dans la base de données de l'API Cocktail, utilisez GET sur l'url http://localhost:3000/cocktails/
+
+  - Chercher une recette par son id. (GET)
+  Pour obtenir une recette par son id dans la base de données de l'API Cocktail, utilisez GET sur l'url http://localhost:3000/cocktails/:id
+  Exemple : http://localhost:3000/cocktails/58ef5dba6d72a0152dbe6c0c
+
+  - Chercher une recette par son nom. (GET)
+  Pour obtenir une recette par son nom dans la base de données de l'API Cocktail, utilisez GET sur l'url http://localhost:3000/cocktails/name/:name
+  Exemple : http://localhost:3000/cocktails/name/Mojito
+
+  - Chercher des recette par leurs ingredients. (GET)
+  Pour obtenir une recette à partir d'un ingrédient dans la base de données de l'API Cocktail, utilisez GET sur l'url http://localhost:3000/cocktails/ingredients/:ingredients
+  Exemple : http://localhost:3000/cocktails/ingredients/salt
+
+  - Créer une nouvelle recette. (POST)
+  Pour créer une nouvelle recette dans la base de données de l'API Cocktail, utilisez POST sur l'url http://localhost:3000/cocktails/
+  Entrez chacune de vos données de la manière suivante :
+  ```
+  {
+  "name": "Piña Colada",
+  "ingredients": ["white rum", "pineapple juice", "coconut cream", "pineapple"],
+  "method": ["Pulse all the ingredients along with a handful of ice in a blender until smooth", "Pour into a tall glass and garnish as you like."]
+  }
+  ```
+
+  - Editer une recette. (PUT)
+  Pour éditer une recette existante dans la base de données de l'API Cocktail, utilisez PUT sur l'url http://localhost:3000/cocktails/:id
+  Exemple : http://localhost:3000/cocktails/58ef5dba6d72a0152dbe6c0c
+  Entrez chacune de vos données à modifier de la manière suivante :
+  ```
+  {
+  "name": "Mojitooooooo !"
+  }
+  ```
+
+  - Supprimer une recette. (DELETE)
+  Pour supprimer une recette existante dans la base de données de l'API Cocktail, utilisez DELETE sur l'url http://localhost:3000/cocktails/:id
+  Exemple : http://localhost:3000/cocktails/58ef5dba6d72a0152dbe6c0c -->
 
   ### getAll
   

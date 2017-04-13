@@ -101,13 +101,26 @@ export default class Cocktail {
         });
   }
 
+  // put(req, res) {
+  //       model.update({_id: req.params.id}, req.body,
+  //           (err, cocktails) => {
+  //               if (err) {
+  //                   res.status(500).send(err.message);
+  //               } else {
+  //                   res.json(cocktails);
+  //               }
+  //           });
+  // }
+
   put(req, res) {
-        model.update({_id: req.params.id}, req.body,
-            (err, cocktails) => {
+        model.findByIdAndUpdate(req.params.id, req.body,
+            (err, cocktail) => {
                 if (err) {
-                    res.status(500).send(err.message);
+                    res.status(500);
+                } else if (!cocktail){
+                    res.status(404);
                 } else {
-                    res.json(cocktails);
+                    res.json(cocktail);
                 }
             });
   }
