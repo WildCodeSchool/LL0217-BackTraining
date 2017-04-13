@@ -77,6 +77,16 @@ export default class Cocktail {
                     res.json(cocktails);
                 }
             });
+  }
+
+  delete(req, res) {
+        model.findByIdAndRemove(req.params.id, (err) => {
+            if (err) {
+                res.status(500).send(err.message);
+            } else {
+                res.sendStatus(200);
+            }
+        });
     }
 
 }

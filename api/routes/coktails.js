@@ -17,6 +17,8 @@ module.exports = (app) => {
 
     router.get('/:id', cocktail.findById);
 
+    router.delete('/:id', cocktail.delete);
+
     app.use('/cocktails', router);
 
 };
