@@ -8,9 +8,9 @@ const cocktailSchema = new mongoose.Schema({
     ingredients: [{
         type: String
     }],
-    method: {
+    method: [{
         type: String
-    },
+    }],
     created_at: {
         type: Date,
         default: Date.now
@@ -38,7 +38,7 @@ export default class Cocktail {
 
     post(req, res) {
 
-        model.create({}, (err, cocktails) => {
+        model.create(req.body, (err, cocktails) => {
             if (err || !cocktails) {
                 res.sendStatus(403);
             } else {
@@ -49,8 +49,7 @@ export default class Cocktail {
 
     findById(req, res) {
 
-        model.find({
-            _id
+        model.findById(req.params.id, {
         }, (err, cocktails) => {
             if (err || !cocktails) {
                 res.sendStatus(403);
@@ -62,8 +61,7 @@ export default class Cocktail {
 
     findByName(req, res) {
 
-        model.find({
-            _name
+        model.find(req.params.name, {
         }, (err, cocktails) => {
             if (err || !cocktails) {
                 res.sendStatus(403);
@@ -75,8 +73,7 @@ export default class Cocktail {
 
     findByIngredients(req, res) {
 
-        model.find([{
-            _ingredients
+        model.findAll(req.params.name, [{
         }], (err, cocktails) => {
             if (err || !cocktails) {
                 res.sendStatus(403);
@@ -91,6 +88,16 @@ export default class Cocktail {
         model.update({
             _id: req.params.id
         }, req.body, (err, cocktails) => {
+            if (err || !cocktails) {
+                res.sendStatus(403);
+            } else {
+                res.json(cocktails);
+            }
+        });
+    }
+    delete(req, res) {
+
+        model.findByIdAndRemove(req.params.id, (err, cocktails) => {
             if (err || !cocktails) {
                 res.sendStatus(403);
             } else {

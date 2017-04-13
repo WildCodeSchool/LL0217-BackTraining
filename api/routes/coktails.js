@@ -13,6 +13,8 @@ module.exports = (app) => {
     router.get('/', cocktail.findByName);
     router.get('/', cocktail.findByIngredients);
     router.put('/', cocktail.put);
+    router.delete('/', cocktail.delete);
+
 
 
     app.use('/cocktails', router);
