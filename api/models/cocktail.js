@@ -87,6 +87,17 @@ export default class Cocktail {
                 res.sendStatus(200);
             }
         });
-    }
+  }
+
+  put(req, res) {
+        model.update({_id: req.params.id}, req.body,
+            (err, cocktails) => {
+                if (err) {
+                    res.status(500).send(err.message);
+                } else {
+                    res.json(cocktails);
+                }
+            });
+  }
 
 }
