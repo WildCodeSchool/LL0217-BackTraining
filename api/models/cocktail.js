@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import City from './city.js';
+
 
 const cocktailSchema = new mongoose.Schema({
   // Write schema here.
@@ -7,12 +9,20 @@ const cocktailSchema = new mongoose.Schema({
 name: {
   type: String
 },
+
 ingredients: {
   type: String
 },
+
 method: {
   type: String
 },
+
+city: {
+  type: Schema.Types.ObjectId,
+   ref: 'City'
+},
+
 created_at: {
   type: Date,
   default: Date.now
